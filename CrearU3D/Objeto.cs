@@ -4,7 +4,7 @@ namespace CrearU3D;
 
 public class Objeto
 {
-    public List<Parte> Partes { get; private set; }
+    public List<Parte> Partes { get;private set; }
     public Vertice Posicion { get; set; }
 
     public Vector3 Rotacion { get; set; } = Vector3.Zero;

@@ -16,7 +16,7 @@ public class Cara
 
     public void Dibujar()
     {
-        GL.Begin(PrimitiveType.Polygon);
+        GL.Begin(PrimitiveType.LineLoop);
         GL.Color4(this.color);
 
         foreach (var vertice in this.Vertices)
