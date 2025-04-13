@@ -6,10 +6,10 @@ namespace CrearU3D;
 
 public class LetraU : Objeto
 {
-    
+
     public LetraU(Vertice posicion, Color4 color) : base([], posicion)
     {
-        List<Vertice> posteIzquierdo = [
+        List<Vertice> bloqueIzquierdo = [
             new Vertice(-0.5f, 0.6f, 0.0f),   // Arriba-frontal
             new Vertice(-0.3f, 0.6f, 0.0f),   // Arriba-trasero
             new Vertice(-0.3f, -0.3f, 0.0f),  // Abajo-trasero
@@ -20,9 +20,9 @@ public class LetraU : Objeto
             new Vertice(-0.5f, -0.3f, -0.2f)  // Abajo-frontal (profundidad)
         ];
 
-        this.Partes.Add(Utils.CrearBloque3D(posteIzquierdo, color));
+        this.Partes.Add(Utils.CrearBloque3D(bloqueIzquierdo, color));
 
-        List<Vertice> posteDerecho = [
+        List<Vertice> bloqueDerecho = [
             new Vertice(0.3f, 0.6f, 0.0f),    // Arriba-frontal
             new Vertice(0.5f, 0.6f, 0.0f),    // Arriba-trasero
             new Vertice(0.5f, -0.3f, 0.0f),   // Abajo-trasero
@@ -33,9 +33,9 @@ public class LetraU : Objeto
             new Vertice(0.3f, -0.3f, -0.2f)   // Abajo-frontal (profundidad)
         ];
 
-        this.Partes.Add(Utils.CrearBloque3D(posteDerecho, color));
+        this.Partes.Add(Utils.CrearBloque3D(bloqueDerecho, color));
 
-        List<Vertice> travesaño = [
+        List<Vertice> baseU = [
             new Vertice(-0.3f, -0.1f, 0.0f),  // Izquierda-frontal
             new Vertice(0.3f, -0.1f, 0.0f),   // Derecha-frontal
             new Vertice(0.3f, -0.3f, 0.0f),   // Derecha-abajo-frontal
@@ -46,6 +46,6 @@ public class LetraU : Objeto
             new Vertice(-0.3f, -0.3f, -0.2f)  // Izquierda-abajo-trasero
         ];
 
-        this.Partes.Add(Utils.CrearBloque3D(travesaño, color));
+        this.Partes.Add(Utils.CrearBloque3D(baseU, color));
     }
 }
