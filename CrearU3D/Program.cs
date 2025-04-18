@@ -8,7 +8,7 @@ class Program
     {
         using (Game game = new Game())
         {
-            game.Run(120.0); // Opcional: Ejecuta el juego a 60 FPS
+            game.Run(60.0); // Opcional: Ejecuta el juego a 60 FPS
         }
     }
 }

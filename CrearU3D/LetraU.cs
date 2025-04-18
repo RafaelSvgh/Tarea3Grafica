@@ -20,7 +20,7 @@ public class LetraU : Objeto
             new Vertice(-0.5f, -0.3f, -0.2f)  // Abajo-frontal (profundidad)
         ];
 
-        this.Partes.Add(Utils.CrearBloque3D(bloqueIzquierdo, color));
+        this.AgregarParte("Izquierdo", Utils.CrearBloque3D(bloqueIzquierdo, color));
 
         List<Vertice> bloqueDerecho = [
             new Vertice(0.3f, 0.6f, 0.0f),    // Arriba-frontal
@@ -33,7 +33,7 @@ public class LetraU : Objeto
             new Vertice(0.3f, -0.3f, -0.2f)   // Abajo-frontal (profundidad)
         ];
 
-        this.Partes.Add(Utils.CrearBloque3D(bloqueDerecho, color));
+        this.AgregarParte("Derecho", Utils.CrearBloque3D(bloqueDerecho, color));
 
         List<Vertice> baseU = [
             new Vertice(-0.3f, -0.1f, 0.0f),  // Izquierda-frontal
@@ -46,6 +46,7 @@ public class LetraU : Objeto
             new Vertice(-0.3f, -0.3f, -0.2f)  // Izquierda-abajo-trasero
         ];
 
-        this.Partes.Add(Utils.CrearBloque3D(baseU, color));
+        this.AgregarParte("Base", Utils.CrearBloque3D(baseU, color));
+        this.Trasladar(posicion.X, posicion.Y, posicion.Z);
     }
 }

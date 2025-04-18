@@ -2,44 +2,73 @@
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 namespace CrearU3D;
-
 public class Objeto
 {
-    public List<Parte> Partes { get;private set; }
-    public Vertice Posicion { get; set; }
-    public Objeto(List<Parte> partes, Vertice posicion)
+    public Dictionary<string, Parte> Partes { get; set; } = new Dictionary<string, Parte>();
+    public Vertice Posicion { get; set; } = new Vertice();
+    public Objeto(Dictionary<string, Parte> partes, Vertice posicion)
     {
         Partes = partes;
         Posicion = posicion;
     }
+    public Objeto() { }
 
-    public Objeto(Vertice posicion, Color4 color, string ruta)
+    public void AgregarParte(string id, Parte parte)
     {
-        Partes = [];
-        Posicion = posicion;
-        List<List<Vertice>> listaVertices = [];
-        listaVertices = Utils.ProcesarArchivoVertices(ruta);
-        if (listaVertices.Count > 0)
-        {
-            foreach (List<Vertice> vertices in listaVertices)
-                this.Partes.Add(Utils.CrearBloque3D(vertices, color));
-        }
-        else
-        {
-            throw new Exception("No hay puntos que mostrar");
-        }
+        Partes[id] = parte;
     }
 
+    public void EliminarParte(string id)
+    {
+        if (Partes.ContainsKey(id))
+            Partes.Remove(id);
+    }
+
+    public Parte? ObtenerParte(string id)
+    {
+        if (Partes.ContainsKey(id))
+            return Partes[id];
+        else
+            return null;
+    }
     public void Dibujar()
     {
-        GL.PushMatrix();
-        GL.Translate(Posicion.X, Posicion.Y, Posicion.Z);
-        foreach (var parte in Partes)
-        {
+        foreach (Parte parte in Partes.Values)
             parte.Dibujar();
+    }
+
+    public void Rotar(float angX, float angY, float angZ)
+    {
+        Vertice centro = CalcularCentro();
+        foreach (var parte in Partes.Values)
+            foreach (var cara in parte.Caras.Values)
+            {
+                cara.SetCentro(centro);
+                cara.Rotar(angX, angY, angZ);
+            }
+    }
+     public void Trasladar(float deltaX, float deltaY, float deltaZ)
+        {
+            foreach (var parte in Partes.Values)
+                parte.Trasladar(deltaX, deltaY, deltaZ);
         }
 
-        GL.PopMatrix();
+    private Vertice CalcularCentro()
+    {
+        var vertices = Partes.Values.SelectMany(p => p.Caras.Values)
+                                    .SelectMany(c => c.Vertices.Values).ToList();
+        return new Vertice(vertices.Average(v => v.X), vertices.Average(v => v.Y), vertices.Average(v => v.Z));
+    }
+
+    public void Escalar(float factor)
+    {
+        Vertice centro = CalcularCentro();
+        foreach (var parte in Partes.Values)
+            foreach (var cara in parte.Caras.Values)
+            {
+                cara.SetCentro(centro);
+                cara.Escalar(factor);
+            }
     }
 
 }
