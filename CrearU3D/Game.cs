@@ -6,6 +6,7 @@ using CrearU3D.Serializacion;
 using CrearU3D.Estructura;
 using CrearU3D.Controles;
 using CrearU3D.Formas;
+using CrearU3D.Utilidades;
 
 namespace CrearU3D;
 

@@ -1,8 +1,7 @@
-﻿
-using OpenTK.Graphics;
+﻿using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 
-namespace CrearU3D;
+namespace CrearU3D.Utilidades;
 
 public class PlanoCartesiano
 {
