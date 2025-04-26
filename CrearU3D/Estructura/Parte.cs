@@ -1,13 +1,9 @@
-﻿
-using OpenTK;
-using System.Collections;
-
-namespace CrearU3D;
-public class Parte
+﻿namespace CrearU3D.Estructura;
+public class Parte: InterfaceFigura
 {
-    public Dictionary<String,Cara> Caras { get; set; } = new Dictionary<string, Cara>(); 
-    public Vertice Centro { get; set; } = new Vertice(); 
-    public Parte(Dictionary<String, Cara> caras)
+    public Dictionary<string, Cara> Caras { get; set; } = new Dictionary<string, Cara>(); 
+    public Punto Centro { get; set; } = new Punto(); 
+    public Parte(Dictionary<string, Cara> caras)
     {
         Caras = caras;
         Centro = CalcularCentro();
@@ -15,9 +11,19 @@ public class Parte
 
     public Parte() { }
 
-    public void AgregarCara(String id, Cara cara)
+    public void AgregarCara(string id, Cara cara)
     {
         Caras[id] = cara;
+    }
+
+    public void EliminarCara(string id)
+    {
+        Caras.Remove(id);
+    }
+
+    public Cara? ObtenerCara(string id)
+    {
+        return Caras.ContainsKey(id) ? Caras[id] : null;
     }
 
     public void Dibujar()
@@ -27,18 +33,12 @@ public class Parte
     }
     public void Rotar(float angX, float angY, float angZ)
     {
-        Vertice centro = CalcularCentro();
+        Punto centro = CalcularCentro();
         foreach (var cara in Caras.Values)
         {
             cara.SetCentro(centro);
             cara.Rotar(angX, angY, angZ);
         }
-    }
-
-    private Vertice CalcularCentro()
-    {
-        var vertices = Caras.Values.SelectMany(c => c.Vertices.Values).ToList();
-        return new Vertice(vertices.Average(v => v.X), vertices.Average(v => v.Y), vertices.Average(v => v.Z));
     }
 
     public void Trasladar(float deltaX, float deltaY, float deltaZ)
@@ -49,13 +49,18 @@ public class Parte
 
     public void Escalar(float factor)
     {
-        Vertice centro = CalcularCentro();
+        Punto centro = CalcularCentro();
         foreach (var cara in Caras.Values)
         {
             cara.SetCentro(centro);
             cara.Escalar(factor);
         }
             
+    }
+    private Punto CalcularCentro()
+    {
+        var vertices = Caras.Values.SelectMany(c => c.Vertices.Values).ToList();
+        return new Punto(vertices.Average(v => v.X), vertices.Average(v => v.Y), vertices.Average(v => v.Z));
     }
 
 }

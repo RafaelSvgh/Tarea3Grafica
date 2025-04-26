@@ -1,8 +1,7 @@
-﻿
-using OpenTK;
+﻿using OpenTK;
 using OpenTK.Input;
 
-namespace CrearU3D;
+namespace CrearU3D.Controles;
 
 public class Camara
 {
@@ -25,8 +24,8 @@ public class Camara
     public Camara(float anchoVentana, float altoVentana)
     {
         Distancia = 5.0f;
-        AnguloX = 30.0f;
-        AnguloY = 45.0f;
+        AnguloX = 0.0f;
+        AnguloY = 0.0f;
         Objetivo = Vector3.Zero;
         Arriba = Vector3.UnitY;
 

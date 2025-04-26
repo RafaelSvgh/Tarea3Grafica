@@ -1,10 +1,11 @@
-﻿using OpenTK.Graphics;
+﻿using CrearU3D.Estructura;
+using OpenTK.Graphics;
 
-namespace CrearU3D;
+namespace CrearU3D.Utilidades;
 
 public static class Utils
 {
-    public static Parte CrearBloque3D(List<Vertice> vertices, Color4 color)
+    public static Parte CrearBloque3D(List<Punto> vertices, Color4 color)
     {
         if (vertices.Count != 8)
             throw new ArgumentException("Se requieren exactamente 8 vértices para un bloque.");
@@ -12,7 +13,7 @@ public static class Utils
         var caras = new Dictionary<string, Cara>
            {
                // Cara frontal
-               { "frontal", new Cara(new Dictionary<string, Vertice>
+               { "frontal", new Cara(new Dictionary<string, Punto>
                {
                    { "v1", vertices[0] },
                    { "v2", vertices[1] },
@@ -20,7 +21,7 @@ public static class Utils
                    { "v4", vertices[3] }
                }, color) },
                // Cara trasera
-               { "trasera", new Cara(new Dictionary<string, Vertice>
+               { "trasera", new Cara(new Dictionary<string, Punto>
                {
                    { "v1", vertices[4] },
                    { "v2", vertices[5] },
@@ -28,7 +29,7 @@ public static class Utils
                    { "v4", vertices[7] }
                }, color) },
                // Cara lateral izquierda
-               { "lateralIzquierda", new Cara(new Dictionary<string, Vertice>
+               { "lateralIzquierda", new Cara(new Dictionary<string, Punto>
                {
                    { "v1", vertices[0] },
                    { "v2", vertices[4] },
@@ -36,7 +37,7 @@ public static class Utils
                    { "v4", vertices[3] }
                }, color) },
                // Cara lateral derecha
-               { "lateralDerecha", new Cara(new Dictionary<string, Vertice>
+               { "lateralDerecha", new Cara(new Dictionary<string, Punto>
                {
                    { "v1", vertices[1] },
                    { "v2", vertices[5] },
@@ -44,7 +45,7 @@ public static class Utils
                    { "v4", vertices[2] }
                }, color) },
                // Cara superior
-               { "superior", new Cara(new Dictionary<string, Vertice>
+               { "superior", new Cara(new Dictionary<string, Punto>
                {
                    { "v1", vertices[0] },
                    { "v2", vertices[4] },
@@ -52,7 +53,7 @@ public static class Utils
                    { "v4", vertices[1] }
                }, color) },
                // Cara inferior
-               { "inferior", new Cara(new Dictionary<string, Vertice>
+               { "inferior", new Cara(new Dictionary<string, Punto>
                {
                    { "v1", vertices[3] },
                    { "v2", vertices[7] },
