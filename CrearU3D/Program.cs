@@ -6,9 +6,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        using (Game game = new Game())
+        using (Game game = new())
         {
-            game.Run(60.0); // Opcional: Ejecuta el juego a 60 FPS
+            game.Run(120.0);
         }
     }
 }

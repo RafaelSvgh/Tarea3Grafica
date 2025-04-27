@@ -9,7 +9,6 @@ public class Escenario: InterfaceFigura
     public Dictionary<string, Objeto> Objetos { get; set; } = new Dictionary<string, Objeto>();
     public Punto Centro { get; set; } = new Punto(); 
     public Color4 ColorDeFondo { get; set; } = Color4.Black;
-
     public Escenario() { }
 
     public Escenario(Color4 colorDeFondo)
@@ -73,7 +72,6 @@ public class Escenario: InterfaceFigura
     {
         if (Objetos == null || Objetos.Count == 0)
             return new Punto();
-
         float xProm = Objetos.Values.Average(obj => obj.CalcularCentro().X);
         float yProm = Objetos.Values.Average(obj => obj.CalcularCentro().Y);
         float zProm = Objetos.Values.Average(obj => obj.CalcularCentro().Z);

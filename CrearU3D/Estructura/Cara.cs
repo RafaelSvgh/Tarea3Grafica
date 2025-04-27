@@ -32,9 +32,9 @@ public class Cara: InterfaceFigura
         GL.End();
     }
 
-    public void Trasladar(float deltaX, float deltaY, float deltaZ)
+    public void Trasladar(float posX, float posY, float posZ)
     {
-        Matrix4 traslacion = Matrix4.CreateTranslation(deltaX, deltaY, deltaZ);
+        Matrix4 traslacion = Matrix4.CreateTranslation(posX, posY, posZ);
         TransformarPuntos(traslacion);
         CalcularCentro();
     }

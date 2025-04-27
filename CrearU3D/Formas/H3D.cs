@@ -9,7 +9,7 @@ public class H3D : Objeto
     public H3D(Punto posicion, Color4 color) : base([], posicion)
     {
         // Parte vertical izquierda
-        List<Punto> pataIzquierda = [
+        List<Punto> Izquierda = [
             new Punto(-0.5f, 0.5f, 0.0f),   // Superior frontal izquierdo
             new Punto(-0.3f, 0.5f, 0.0f),   // Superior frontal derecho
             new Punto(-0.3f, -0.5f, 0.0f),  // Inferior frontal derecho
@@ -19,10 +19,10 @@ public class H3D : Objeto
             new Punto(-0.3f, -0.5f, -0.2f), // Inferior trasero derecho
             new Punto(-0.5f, -0.5f, -0.2f) // Inferior trasero izquierdo
         ];
-        AgregarParte("Izquierdo", Utils.CrearBloque3D(pataIzquierda, color));
+        AgregarParte("Izquierdo", Utils.CrearBloque3D(Izquierda, color));
 
         // Parte vertical derecha
-        List<Punto> pataDerecha = [
+        List<Punto> Derecha = [
             new Punto(0.3f, 0.5f, 0.0f),    // Superior frontal izquierdo
             new Punto(0.5f, 0.5f, 0.0f),    // Superior frontal derecho
             new Punto(0.5f, -0.5f, 0.0f),   // Inferior frontal derecho
@@ -32,7 +32,7 @@ public class H3D : Objeto
             new Punto(0.5f, -0.5f, -0.2f),  // Inferior trasero derecho
             new Punto(0.3f, -0.5f, -0.2f)   // Inferior trasero izquierdo
         ];
-        AgregarParte("Derecho", Utils.CrearBloque3D(pataDerecha, color));
+        AgregarParte("Derecho", Utils.CrearBloque3D(Derecha, color));
 
         // Parte horizontal central
         List<Punto> travesaño = [

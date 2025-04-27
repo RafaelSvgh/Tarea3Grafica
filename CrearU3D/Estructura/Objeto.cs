@@ -3,10 +3,10 @@ public class Objeto : InterfaceFigura
 {
     public Dictionary<string, Parte> Partes { get; set; } = new Dictionary<string, Parte>();
     public Punto Centro { get; set; } = new Punto();
-    public Objeto(Dictionary<string, Parte> partes, Punto posicion)
+    public Objeto(Dictionary<string, Parte> partes, Punto centro)
     {
         Partes = partes;
-        Centro = posicion;
+        Centro = centro;
     }
     public Objeto() { }
 

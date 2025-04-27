@@ -11,16 +11,6 @@ public class Parte: InterfaceFigura
 
     public Parte() { }
 
-    public void AgregarCara(string id, Cara cara)
-    {
-        Caras[id] = cara;
-    }
-
-    public void EliminarCara(string id)
-    {
-        Caras.Remove(id);
-    }
-
     public Cara? ObtenerCara(string id)
     {
         return Caras.ContainsKey(id) ? Caras[id] : null;
